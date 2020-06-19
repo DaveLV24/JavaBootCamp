@@ -12,20 +12,23 @@ public class OperatorActivity {
 	public static void main(String[] args) {
 		
 		// Declare numbers to be operated
-		int i = 8;
-		int j = 5;
+		int nr1 = 5466;
+		int nr2 = 555;
 		
 		// Subtract numbers
-		int result = i-j;
+		int result = nr1 - nr2;
 		
 		// Print result
 		System.out.println("Difference = " + result);
 		
 		// Add numbers
+		int nrOne = 1946;
+		int nrTwo = 1555;
 		
-		
+		// Subtract numbers
+		int resultisss = nrOne - nrTwo;
 		// Print result
-		
+		System.out.println("Difference = " + resultisss);
 		
 	}
 
