@@ -5,7 +5,7 @@ package sef.module4.activity;
 
 /**
  * @author 
- *
+ * Dave
  */
 public class Calculator {
 
