@@ -49,3 +49,5 @@ public class NumToWords {
 	
 
 }
+
+//can test with jUnit
