@@ -26,10 +26,8 @@ public class SQLExceptionActivity {
 				System.out.println("Class not found");
 		
 			
-		
 			//2 - You also need to catch SQLException for it to compile
-		
-	}
+			}
 	}
 }
 //finish later
