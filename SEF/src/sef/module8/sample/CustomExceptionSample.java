@@ -27,5 +27,3 @@ public class CustomExceptionSample {
 	}
 }
 
-
-//not finished?

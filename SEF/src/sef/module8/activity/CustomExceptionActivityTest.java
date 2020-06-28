@@ -21,16 +21,16 @@ for(int i=0;i<4;i++)
 {
 	
 //2 - Write code to check if parameter name contains a value which is found in validUsers array and change flag's value accordingly 
-
-}
-//3 - check if flag is zero, throw CustomExceptionActivity Exception.
+		} if (flag= 0) {
+		throw new CustomExceptionActivity() {
+		System.out.println("not a valid user"); //3 - check if flag is zero, throw CustomExceptionActivity Exception.
+		}
 //You may also have to declare this exception in the method call using throws.
-
-
 //4 - else if flag is one, print a message "Welcome to Payroll program". 
-
+		else (flag = 1) {
+		System.out.println("Welcome to Payroll program");
+  }
 }
-}
 
 
-//finish later
+// try finish later
