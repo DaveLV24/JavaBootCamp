@@ -22,15 +22,23 @@ public class EmployeeJDBCTest extends TestCase {
 
 	public void testFindEmployeeById_MatchFound() {
 		//complete the code here
+		Employee e = emp.findEmployeeById("1");
+		assertEquals("Shane", e.getFirstName());
+		assertEquals("Shanez", e.getLastName());
+		assertEquals(666, e.getSalary());
 	}
 
 	public void testFindEmployeeById_NoMatchFound() {
 		//complete the code here
+		Employee e1 = emp.findEmployeeById("999");
+		assertNull(e1);
 	}
 	
 	
 	public void testFindEmployeeByName_MatchFound() {
 		//complete the code here
+		ArrayList<Employee> list = emp.findEmployeesByName("Shane");
+		assertEquals(2, list.size());
 	}
 	
 	public void testFindEmployeeByName_NoMatchFound() {
@@ -39,6 +47,9 @@ public class EmployeeJDBCTest extends TestCase {
 
 	public void testFindEmployeeBySalary_MatchFound() {
 		//complete the code here
+		ArrayList<Employee> list = emp.findEmployeesBySalary(666);
+		assertEquals(4, list.size());
+		
 	}
 
 	public void testFindEmployeeBySalary_NoMatchFound() {

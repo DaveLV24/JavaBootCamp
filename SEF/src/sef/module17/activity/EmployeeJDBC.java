@@ -8,16 +8,38 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeJDBC {
+	public static void main(String arg[]) {
+		Connection con = createConnection();
+		System.out.println(con);
+	
+	
+//insert employee
+//	Employee e2 = new Employee();
+//	e2.setId("2");
+//	e2.setFirstName("Shanezzz");
+//	e2.setLastName("Shanezsss");
+//	e2.setSalary(1666);
+//	
+//	insertEmployee(e2);
+	
+	// get employee
+//	Employee e2 = new Employee();
+//	e1 = findEmployeeById("1");
+//	System.out.println(e1.getFirstName());
+// Get Employee by Name
+	}
 
-	public Connection createConnection()
+	
+	public static Connection createConnection()
 	{
+	
 		Connection con=null;
 		String url = "jdbc:mysql://localhost/activity";
 		String user = "root";
-		String pass = "adbd1234";
-
+		String pass = "admin";
+		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, pass);
 			System.out.println("Connection successfully established!");
 		} catch (ClassNotFoundException e) {
@@ -27,26 +49,29 @@ public class EmployeeJDBC {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return con;
 	}
 	
-	public Employee findEmployeeById(String id)
+	public static Employee findEmployeeById(String id)
 	{
 		Connection con = createConnection();
 		Employee emp=null;
 		try {
 		// 1 - Create a PreparedStatement with a query
-		
-
+		PreparedStatement pStmt = con.prepareStatement("SELECT * FROM employee where id = ? ");
 		// 2 - Search for the given id
-		
-
+		pStmt.setString(1,  id);
 		// 3 - Execute this query
-		
-		
+		ResultSet rs = pStmt.executeQuery();
 		// 4 - If resultset is not null, then initialize emp object with data 
-		
+		if (rs.next())
+		{
+			emp=new Employee();
+			emp.setId(rs.getString(1));
+			emp.setFirstName(rs.getString(2));
+			emp.setLastName(rs.getString(3));
+			emp.setSalary(Integer.parseInt(rs.getString(4)));
+		}
 		con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,50 +79,50 @@ public class EmployeeJDBC {
 		}
 		
 		return emp;
+		
 	}
-
-	public ArrayList<Employee> findEmployeesByName(String name)
+//m
+	public static ArrayList<Employee> findEmployeesByName(String name)
 	{
 		Connection con = createConnection();
 		ArrayList<Employee> list = new ArrayList<Employee>();
-		
 		try {
 		// 1 - Create a PreparedStatement with a query
-		
-
+			PreparedStatement pStmt = con.prepareStatement("SELECT * FROM employee where firstName = ? ");
 		// 2 - Search for the given id
-		
+			pStmt.setString(2,  name);
 		// 3 - Execute this query
-		
-		
+			ResultSet rs = pStmt.executeQuery();
 		// 4 - While there are some records, continue 
+			while (rs.next()) {
+				System.out.println("Name: " +rs.getString(2));
+				}
 		
 			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 		return list;
 	}
-
-	public ArrayList<Employee> findEmployeesBySalary(int salary)
+	
+//m
+	public static ArrayList<Employee> findEmployeesBySalary(int salary)
 	{
 		Connection con = createConnection();
 		ArrayList<Employee> list = new ArrayList<Employee>();
-		
 		try {
 		// 1 - Create a PreparedStatement with a query
-		
-
+			PreparedStatement pStmt = con.prepareStatement("SELECT * FROM employee where salary = ? ");
 		// 2 - Search for the given salary
-		
-
+			pStmt.setInt(4,  salary);
 		// 3 - Execute this query
-
-		
+			ResultSet rs = pStmt.executeQuery();
 		// 4 - While there are records, continue 
-
+		while (rs.next()) {
+			System.out.println("Salary: " +rs.getInt(4));
+		}
+			
 		con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -107,18 +132,20 @@ public class EmployeeJDBC {
 		return list;
 	}
 
-	public void insertEmployee(Employee emp)
+	public static static void insertEmployee(Employee emp)
 	{
 		Connection con = createConnection();
-		
 		//1 - Create a PreparedStatement with a query "insert into employee values(?,?,?,?)" 
-		
+		try {
+		PreparedStatement pStmt = con.prepareStatement("insert into employee values(?,?,?,?)");
 		con.setAutoCommit(false);
-
 		//	Substitute the ? now.
-		
+		pStmt.setString(1,emp.getId());
+		pStmt.setString(2,emp.getFirstName());
+		pStmt.setString(3,emp.getLastName());
+		pStmt.setInt(4,emp.getSalary());
 		//2 - Execute this query using executeUpdate()
-			
+			int rows = pStmt.executeUpdate();
 		System.out.println(rows + " row(s) added!");
 		con.commit();
 		con.close();
