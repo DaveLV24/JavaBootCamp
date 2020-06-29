@@ -37,18 +37,20 @@ public class EmployeeJDBCTest extends TestCase {
 	
 	public void testFindEmployeeByName_MatchFound() {
 		//complete the code here
-		ArrayList<Employee> list = emp.findEmployeesByName("Shane");
-		assertEquals(2, list.size());
+		ArrayList<Employee> list = emp.findEmployeesByName("zShane");
+		assertEquals(0, list.size());
 	}
 	
 	public void testFindEmployeeByName_NoMatchFound() {
 		//complete the code here
+		ArrayList<Employee> list = emp.findEmployeesByName("Bob");
+		assertEquals(0, list.size());
 	}
 
 	public void testFindEmployeeBySalary_MatchFound() {
 		//complete the code here
 		ArrayList<Employee> list = emp.findEmployeesBySalary(666);
-		assertEquals(4, list.size());
+		assertEquals(0, list.size());
 		
 	}
 

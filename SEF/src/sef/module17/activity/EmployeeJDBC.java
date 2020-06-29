@@ -90,12 +90,12 @@ public class EmployeeJDBC {
 		// 1 - Create a PreparedStatement with a query
 			PreparedStatement pStmt = con.prepareStatement("SELECT * FROM employee where firstName = ? ");
 		// 2 - Search for the given id
-			pStmt.setString(2,  name);
+			pStmt.setString(1,  name);
 		// 3 - Execute this query
 			ResultSet rs = pStmt.executeQuery();
 		// 4 - While there are some records, continue 
 			while (rs.next()) {
-				System.out.println("Name: " +rs.getString(2));
+				System.out.println("Name: " +rs.getString(1));
 				}
 		
 			con.close();
@@ -115,12 +115,12 @@ public class EmployeeJDBC {
 		// 1 - Create a PreparedStatement with a query
 			PreparedStatement pStmt = con.prepareStatement("SELECT * FROM employee where salary = ? ");
 		// 2 - Search for the given salary
-			pStmt.setInt(4,  salary);
+			pStmt.setInt(1,  salary);
 		// 3 - Execute this query
 			ResultSet rs = pStmt.executeQuery();
 		// 4 - While there are records, continue 
 		while (rs.next()) {
-			System.out.println("Salary: " +rs.getInt(4));
+			System.out.println("Salary: " +rs.getInt(1));
 		}
 			
 		con.close();
