@@ -28,11 +28,11 @@ public class SetSample {
 		//You'd notice that duplicate names are not printed. 
 		print(monthset);
 	}
-	static void print(Set set) {
-		Iterator i = set.iterator(); 
-		while(i.hasNext()) {
-			System.out.println(i.next());
-		}
+//	static void print(Set set) {
+//		Iterator i = set.iterator(); 
+//		while(i.hasNext()) {
+//			System.out.println(i.next());
+//		}
 	}
 }
 
